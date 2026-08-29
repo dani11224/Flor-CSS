@@ -1369,21 +1369,22 @@ body {
 
 
 /* ═══════════════════════════════════════════════════════
-   MENSAJE FINAL + AUDIO TOGGLE
+   MENSAJE FINAL (Flotando en el cielo sobre las flores)
    ═══════════════════════════════════════════════════════ */
 
 .final-message {
   position: fixed;
-  bottom: 8vh;
+  top: 10vh;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 1000;
   text-align: center;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px;
   opacity: 0;
-  transition: opacity var(--duration-message) ease;
   pointer-events: none;
+  /* Animación CSS pura: se muestra a los 4.5s sin fallar */
+  animation: messageFadeIn 2s 4.5s ease-in-out forwards;
 }
 
 .final-message--visible {
@@ -1393,11 +1394,25 @@ body {
 
 .final-message__text {
   font-family: var(--font-accent);
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-size: clamp(1.3rem, 4.2vw, 2.1rem);
   font-weight: 500;
   font-style: italic;
   line-height: 1.6;
-  text-shadow: 0 0 20px var(--color-text-glow);
+  color: var(--color-text);
+  text-shadow: 0 0 25px var(--color-text-glow), 0 2px 10px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+}
+
+@keyframes messageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────── */
@@ -1407,7 +1422,12 @@ body {
   }
 
   .final-message {
-    bottom: 5vh;
+    top: 8vh;
+    width: 92%;
+  }
+
+  .final-message__text {
+    font-size: clamp(1.15rem, 5vw, 1.6rem);
   }
 }
 
