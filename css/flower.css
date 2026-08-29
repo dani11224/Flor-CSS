@@ -1400,36 +1400,6 @@ body {
   text-shadow: 0 0 20px var(--color-text-glow);
 }
 
-.audio-toggle {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  z-index: 200;
-  width: 48px;
-  height: 48px;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.audio-toggle:hover {
-  background: rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.audio-toggle__icon {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-
-
 /* ─── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 480px) {
   .grass {
@@ -1438,13 +1408,6 @@ body {
 
   .final-message {
     bottom: 5vh;
-  }
-
-  .audio-toggle {
-    top: 1rem;
-    right: 1rem;
-    width: 40px;
-    height: 40px;
   }
 }
 
