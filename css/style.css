@@ -1,0 +1,246 @@
+/* ═══════════════════════════════════════════════════════
+   style.css — Estilos de la pantalla de entrada
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── VARIABLES GLOBALES ─────────────────────────────
+   Cambia estos valores para modificar toda la paleta
+   y los tiempos de animación desde un solo lugar.
+   ──────────────────────────────────────────────────── */
+:root {
+  /* Paleta atardecer — tonos realistas y suaves */
+  --color-sky-top:      #1c1e2e;       /* Noche azul grisáceo */
+  --color-sky-mid:      #3d2b52;       /* Violeta apagado */
+  --color-sky-low:      #8b4a5e;       /* Rosa tierra / malva */
+  --color-horizon:      #c48a5a;       /* Naranja cálido tenue */
+  --color-sun:          #d4a95a;       /* Dorado suave */
+
+  /* Textos y acentos */
+  --color-text:         #f0e6d3;       /* Texto principal (crema suave) */
+  --color-text-glow:    rgba(212, 169, 90, 0.4); /* Brillo dorado sutil */
+  --color-btn-bg:       rgba(196, 138, 90, 0.2); /* Fondo botón */
+  --color-btn-border:   rgba(212, 169, 90, 0.4);  /* Borde botón */
+  --color-btn-hover:    rgba(196, 138, 90, 0.35); /* Botón hover */
+
+  /* Partículas */
+  --color-particle:     rgba(212, 169, 90, 0.35);
+
+  /* Tiempos de animación */
+  --duration-typewriter: 3.5s;    /* Duración del efecto typewriter */
+  --delay-btn:           4s;      /* Retardo antes de mostrar el botón */
+  --duration-fade:       0.8s;    /* Duración del fade-out al salir */
+  --duration-particle:   8s;      /* Ciclo flotación de partículas */
+
+  /* Tipografía */
+  --font-body:    'Outfit', sans-serif;
+  --font-accent:  'Playfair Display', serif;
+}
+
+/* ─── RESET & BASE ───────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* Evita scroll en la entrada */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Degradado atardecer de arriba a abajo */
+  background: linear-gradient(
+    180deg,
+    var(--color-sky-top)    0%,
+    var(--color-sky-mid)   35%,
+    var(--color-sky-low)   65%,
+    var(--color-horizon)   85%,
+    var(--color-sun)      100%
+  );
+  background-attachment: fixed;
+}
+
+/* ─── PARTÍCULAS FLOTANTES ───────────────────────── 
+   Contenedor absoluto que cubre toda la pantalla.
+   Las partículas individuales se crean con JS.
+   ──────────────────────────────────────────────────── */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cada partícula es un span creado por JS */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-particle);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat var(--duration-particle) ease-in-out infinite;
+  /* Serán posicionadas aleatoriamente por JS con custom properties */
+}
+
+/* Animación de flotación + parpadeo */
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.2);
+  }
+}
+
+/* ─── CONTENIDO PRINCIPAL ────────────────────────── */
+.entrance {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+}
+
+/* ─── EFECTO TYPEWRITER ──────────────────────────── 
+   El texto se escribe carácter por carácter con JS.
+   El cursor parpadea con CSS.
+   ──────────────────────────────────────────────────── */
+.typewriter {
+  font-family: var(--font-accent);
+  font-size: clamp(1.3rem, 4vw, 2rem); /* Responsive con clamp */
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-text);
+  text-shadow: 0 0 20px var(--color-text-glow);
+  min-height: 3.5em; /* Reserva espacio para evitar saltos */
+}
+
+/* Cursor parpadeante (se añade como ::after con JS toggling) */
+.typewriter--cursor::after {
+  content: '|';
+  display: inline-block;
+  color: var(--color-sun);
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ─── BOTÓN DE ENTRADA ───────────────────────────── */
+.btn-enter {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  border: 1.5px solid var(--color-btn-border);
+  border-radius: 50px;
+  background: var(--color-btn-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: 
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  /* Empieza invisible, JS lo revela tras el typewriter */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Estado visible (clase añadida por JS) */
+.btn-enter--visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* Hover sutil */
+.btn-enter:hover {
+  background: var(--color-btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 154, 60, 0.3);
+}
+
+.btn-enter:active {
+  transform: translateY(0);
+}
+
+/* ─── OVERLAY DE TRANSICIÓN FADE ─────────────────── 
+   Cubre toda la pantalla. Inicia transparente.
+   Se activa con JS para hacer fade-out al navegar.
+   ──────────────────────────────────────────────────── */
+.fade-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-sky-top);
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-fade) ease;
+}
+
+.fade-overlay--active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .entrance {
+    padding: 1.5rem;
+  }
+
+  .btn-enter {
+    padding: 0.85rem 2rem;
+  }
+
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+/* ─── ACCESIBILIDAD: REDUCED MOTION ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .typewriter--cursor::after {
+    animation: none;
+  }
+
+  .particle {
+    opacity: 0.4;
+  }
+
+  .btn-enter,
+  .fade-overlay {
+    transition-duration: 0.01ms;
+  }
+}

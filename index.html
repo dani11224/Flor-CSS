@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Un regalo especial hecho con flores amarillas para alguien que ilumina mi mundo.">
+  <title>Para ti 🌻</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Font: Outfit para un look moderno y cálido -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════
+       PANTALLA DE ENTRADA
+       Fondo: cielo atardecer con partículas doradas
+       Efecto: máquina de escribir + botón con fade
+  ═══════════════════════════════════════════ -->
+
+  <!-- Contenedor de partículas flotantes (generadas por JS) -->
+  <div id="particles" class="particles" aria-hidden="true"></div>
+
+  <!-- Contenido principal centrado -->
+  <main class="entrance" id="entrance">
+    <!-- Mensaje con efecto typewriter -->
+    <p class="typewriter" id="typewriter-text" aria-live="polite"></p>
+
+    <!-- Botón que aparece tras el typewriter -->
+    <a href="flower.html" class="btn-enter" id="btn-enter" role="button">
+      <!-- ✏️ PERSONALIZA: Cambia el texto del botón aquí -->
+      Entra aca :)
+    </a>
+  </main>
+
+  <!-- Overlay para transición fade-out al navegar -->
+  <div class="fade-overlay" id="fade-overlay" aria-hidden="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
