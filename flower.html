@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Un jardín de flores amarillas que crecen solo para ti.">
-  <title>Flores para ti 🌼</title>
-  <link rel="stylesheet" href="css/flower.css?v=2">
+  <meta name="description" content="Un hermoso jardín de lirios (Lilies) que crecen solo para ti bajo el sol.">
+  <title>Lilies para ti 🤍</title>
+  <link rel="stylesheet" href="css/flower.css?v=5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -17,22 +17,25 @@
 <body>
   <!-- ═══════════════════════════════════════════
        ESCENA DE FLORES — ESTILO DaniCodex
-       Fondo: cielo atardecer + pasto
-       3 flores principales + vegetación decorativa
+       Fondo: cielo soleado + pasto verde
+       3 flores principales estilo Lilies + vegetación
        Luces flotantes + balanceo 3D
   ═══════════════════════════════════════════ -->
 
-  <!-- Fade-in overlay -->
-  <div class="fade-overlay fade-overlay--active" id="fade-overlay" aria-hidden="true"></div>
+  <!-- Fade overlay -->
+  <div class="fade-overlay" id="fade-overlay" aria-hidden="true"></div>
 
-  <!-- Cielo con estrellas, nubes suaves y aves lejanas -->
+  <!-- Cielo con sol radiante, nubes suaves y aves lejanas -->
   <div class="sky" aria-hidden="true">
-    <!-- Nubes suaves de atardecer -->
+    <!-- Sol radiante -->
+    <div class="sun"></div>
+
+    <!-- Nubes suaves de día soleado -->
     <div class="cloud cloud--1"></div>
     <div class="cloud cloud--2"></div>
     <div class="cloud cloud--3"></div>
 
-    <!-- Estrellas sutiles -->
+    <!-- Destellos sutiles -->
     <div class="star star--1"></div>
     <div class="star star--2"></div>
     <div class="star star--3"></div>
@@ -53,8 +56,40 @@
   <!-- Pasto decorativo -->
   <div class="grass" aria-hidden="true"></div>
 
+  <!-- Árboles de fondo (ecosistema templado de las Lilies con tronco visible) -->
+  <div class="trees" aria-hidden="true">
+    <!-- Árbol 1: Izquierda (estilo bosque templado / pradera con tronco visible y copa frondosa) -->
+    <div class="tree tree--1">
+      <div class="tree__trunk">
+        <div class="tree__branch tree__branch--1"></div>
+        <div class="tree__branch tree__branch--2"></div>
+      </div>
+      <div class="tree__crown">
+        <div class="tree__leaf-cluster tree__leaf-cluster--1"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--2"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--3"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--4"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--5"></div>
+      </div>
+    </div>
+
+    <!-- Árbol 2: Derecha (árbol templado con tronco visible) -->
+    <div class="tree tree--2">
+      <div class="tree__trunk">
+        <div class="tree__branch tree__branch--1"></div>
+        <div class="tree__branch tree__branch--2"></div>
+      </div>
+      <div class="tree__crown">
+        <div class="tree__leaf-cluster tree__leaf-cluster--1"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--2"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--3"></div>
+        <div class="tree__leaf-cluster tree__leaf-cluster--4"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ ESCENA DE FLORES ═══ -->
-  <div class="flowers" aria-label="Jardín de flores amarillas">
+  <div class="flowers" aria-label="Jardín de flores estilo Lilies">
 
     <!-- ═══ FLOR 1 (izquierda, ligeramente inclinada) ═══ -->
     <div class="flower flower--1">
@@ -312,13 +347,17 @@
 
   </div>
 
-  <!-- Mensaje final -->
+  <!-- Mensaje final (dividido en 2 columnas para no tapar la flor) -->
   <div class="final-message" id="final-message" aria-live="polite">
-    <!-- ✏️ PERSONALIZA: Cambia tu mensaje final aquí -->
-    <p class="final-message__text">Espero que este detalle alegre un poco tu dia </p>
+    <div class="final-message__col final-message__col--left">
+      <p class="final-message__text">Sé que tuviste un día estresante, espero este detalle te saque una sonrisa,</p>
+    </div>
+    <div class="final-message__col final-message__col--right">
+      <p class="final-message__text">y recuerda que mañana será un mejor día, sigue dando lo mejor de ti</p>
+    </div>
   </div>
 
-  <script src="js/anim.js?v=2"></script>
+  <script src="js/anim.js?v=3"></script>
 </body>
 
 </html>

@@ -7,22 +7,22 @@
    y los tiempos de animación desde un solo lugar.
    ──────────────────────────────────────────────────── */
 :root {
-  /* Paleta atardecer — tonos realistas y suaves */
-  --color-sky-top:      #1c1e2e;       /* Noche azul grisáceo */
-  --color-sky-mid:      #3d2b52;       /* Violeta apagado */
-  --color-sky-low:      #8b4a5e;       /* Rosa tierra / malva */
-  --color-horizon:      #c48a5a;       /* Naranja cálido tenue */
-  --color-sun:          #d4a95a;       /* Dorado suave */
+  /* Paleta soleada — tonos radiantes de cielo despejado */
+  --color-sky-top:      #1976d2;       /* Azul cielo profundo superior */
+  --color-sky-mid:      #42a5f5;       /* Azul celeste brillante */
+  --color-sky-low:      #90caf9;       /* Azul cielo luminoso */
+  --color-horizon:      #ffe082;       /* Horizonte dorado soleado */
+  --color-sun:          #fff9c4;       /* Resplandor solar */
 
   /* Textos y acentos */
-  --color-text:         #f0e6d3;       /* Texto principal (crema suave) */
-  --color-text-glow:    rgba(212, 169, 90, 0.4); /* Brillo dorado sutil */
-  --color-btn-bg:       rgba(196, 138, 90, 0.2); /* Fondo botón */
-  --color-btn-border:   rgba(212, 169, 90, 0.4);  /* Borde botón */
-  --color-btn-hover:    rgba(196, 138, 90, 0.35); /* Botón hover */
+  --color-text:         #ffffff;       /* Texto blanco nítido */
+  --color-text-glow:    rgba(255, 240, 220, 0.7); /* Brillo cálido suave */
+  --color-btn-bg:       rgba(255, 255, 255, 0.22); /* Fondo botón cristal translúcido */
+  --color-btn-border:   rgba(255, 255, 255, 0.7);  /* Borde botón nítido */
+  --color-btn-hover:    rgba(255, 255, 255, 0.38); /* Botón hover */
 
-  /* Partículas */
-  --color-particle:     rgba(212, 169, 90, 0.35);
+  /* Partículas — destellos solares flotantes */
+  --color-particle:     rgba(255, 255, 255, 0.7);
 
   /* Tiempos de animación */
   --duration-typewriter: 3.5s;    /* Duración del efecto typewriter */
@@ -129,7 +129,7 @@ body {
   font-style: italic;
   line-height: 1.6;
   color: var(--color-text);
-  text-shadow: 0 0 20px var(--color-text-glow);
+  text-shadow: 0 0 20px var(--color-text-glow), 0 2px 14px rgba(13, 71, 161, 0.5);
   min-height: 3.5em; /* Reserva espacio para evitar saltos */
 }
 
@@ -137,7 +137,7 @@ body {
 .typewriter--cursor::after {
   content: '|';
   display: inline-block;
-  color: var(--color-sun);
+  color: #f57c00;
   animation: blink 0.7s step-end infinite;
   margin-left: 2px;
 }
@@ -186,7 +186,7 @@ body {
 .btn-enter:hover {
   background: var(--color-btn-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 154, 60, 0.3);
+  box-shadow: 0 8px 30px rgba(255, 183, 77, 0.45), 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 .btn-enter:active {

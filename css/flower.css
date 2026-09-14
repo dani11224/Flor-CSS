@@ -13,65 +13,65 @@
 
 /* ─── VARIABLES ──────────────────────────────────────── */
 :root {
-  /* Paleta cielo atardecer — tonos realistas */
-  --color-sky-top: #1c1e2e;
-  --color-sky-mid: #3d2b52;
-  --color-sky-low: #8b4a5e;
-  --color-horizon: #c48a5a;
-  --color-sun: #d4a95a;
+  /* Paleta cielo soleado de día — tonos luminosos y cálidos */
+  --color-sky-top: #1976d2;      /* Azul cielo profundo superior */
+  --color-sky-mid: #42a5f5;      /* Azul celeste brillante */
+  --color-sky-low: #90caf9;      /* Azul luminoso */
+  --color-horizon: #ffe082;      /* Horizonte cálido soleado */
+  --color-sun: #fff9c4;          /* Resplandor del sol */
 
-  /* Color oscuro base (para fondos y sombras) */
-  --dark-color: #1c1e2e;
+  /* Color base para sombras y contrastes */
+  --dark-color: #0d47a1;
 
-  /* Pasto — tonos apagados */
-  --color-grass-1: #263e23;
-  --color-grass-2: #3d6b35;
-  --color-grass-3: #4e8a45;
+  /* Pasto — tonos vivos y frescos bajo el sol */
+  --color-grass-1: #2b7036;
+  --color-grass-2: #388e3c;
+  --color-grass-3: #4caf50;
 
-  /* Flor */
-  --color-petal: #fddd25;
-  /* Pétalos amarillos */
-  --color-petal-shadow: #7c6901;
-  /* Pétalo de sombra */
-  --color-center-bg: #fff;
-  /* Centro blanco */
-  --color-center-pattern: #ffeb12;
-  /* Patrón del centro */
+  /* Flor — Color Lirio (Lily) blanco nacarado elegante */
+  --color-petal: #ffffff;
+  /* Pétalos blanco puro lirio */
+  --color-petal-shadow: #eddfe8;
+  /* Pétalo de sombra nacarado con suave rubor lirio */
+  --color-center-bg: #e8f5e9;
+  /* Centro verde pistilo suave */
+  --color-center-pattern: #f57c00;
+  /* Polen ámbar naranja característico de los lirios */
 
-  /* Vegetación */
-  --color-stem: #14757a;
-  /* Tallo oscuro */
-  --color-stem-light: #39c6d6;
+  /* Vegetación — ecosistema templado */
+  --color-stem: #1b5e20;
+  /* Tallo verde bosque */
+  --color-stem-light: #43a047;
   /* Tallo claro */
-  --color-leaf-green: #159faa;
+  --color-leaf-green: #2e7d32;
   /* Hojas del tallo */
-  --color-leaf-bright: #5ed639;
+  --color-leaf-bright: #66bb6a;
   /* Hojas claras */
-  --color-leaf-dark: #079097;
+  --color-leaf-dark: #1b5e20;
   /* Ramas */
-  --color-bush: #1aaa15;
+  --color-bush: #2e7d32;
   /* Arbustos */
 
   /* Luces */
-  --color-light-warm: rgb(255, 251, 0);
-  /* Luces cálidas */
-  --color-light-cool: #23f0ff;
-  /* Luces frías */
+  --color-light-warm: #ffb74d;
+  /* Luces cálidas polen dorado */
+  --color-light-cool: #ffffff;
+  /* Luces blancas lirio */
 
-  /* Nubes y aves (detalles de fondo con mayor contraste y visibilidad) */
-  --color-cloud-top: rgba(150, 85, 110, 0.45);
-  /* Malva atardecer visible */
-  --color-cloud-bottom: rgba(212, 169, 90, 0.32);
-  /* Brillo cálido horizonte */
-  --color-bird: rgba(25, 18, 35, 0.82);
-  /* Silueta de ave nítida y visible */
+  /* Nubes y aves (cielo diurno despejado y luminoso) */
+  --color-cloud-top: rgba(255, 255, 255, 0.92);
+  /* Nubes blancas esponjosas */
+  --color-cloud-bottom: rgba(255, 248, 225, 0.78);
+  /* Brillo cálido inferior */
+  --color-bird: rgba(24, 60, 95, 0.85);
+  /* Siluetas de aves nítidas */
 
-  /* Estrellas */
-  --color-star: rgba(255, 255, 255, 0.7);
+  /* Destellos de luz en el cielo */
+  --color-star: rgba(255, 255, 255, 0.45);
 
   /* Texto */
-  --color-text: #f0e6d3;
-  --color-text-glow: rgba(212, 169, 90, 0.4);
+  --color-text: #ffffff;
+  --color-text-glow: rgba(255, 240, 220, 0.7);
 
   /* Tiempos */
   --fl-speed: 0.8s;
@@ -218,9 +218,41 @@ body {
   }
 }
 
-/* ─── CIELO: NUBES DE ATARDECER (FORMAS ORGÁNICAS) ────── 
-   Nubes esponjosas compuestas con cúpulas redondeadas 
-   (::before y ::after) y gradientes cálidos de atardecer.
+/* ─── CIELO: SOL CÁLIDO Y SUAVE ──────────────────────── 
+   Intensidad atenuada para evitar deslumbramiento, con un
+   resplandor cálido y apacible que no fatiga la vista.
+   ──────────────────────────────────────────────────────── */
+.sun {
+  position: absolute;
+  top: 7%;
+  right: 14%;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffdf2 25%, #ffe89e 65%, #ffd54f 100%);
+  box-shadow: 
+    0 0 20px 6px rgba(255, 224, 130, 0.35),
+    0 0 45px 12px rgba(255, 213, 79, 0.15);
+  animation: sunPulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  opacity: 0.88;
+  z-index: 0;
+}
+
+@keyframes sunPulse {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.84;
+  }
+  100% {
+    transform: scale(1.01);
+    opacity: 0.90;
+  }
+}
+
+/* ─── CIELO: NUBES DE DÍA SOLEADO (FORMAS ORGÁNICAS) ──── 
+   Nubes esponjosas blancas compuestas con cúpulas redondeadas 
+   (::before y ::after) bañadas por la luz del sol.
    ──────────────────────────────────────────────────────── */
 .cloud {
   position: absolute;
@@ -228,10 +260,10 @@ body {
   background: linear-gradient(180deg,
       var(--color-cloud-top) 0%,
       var(--color-cloud-bottom) 100%);
-  filter: blur(5px);
+  filter: blur(4px);
   pointer-events: none;
-  opacity: 0.92;
-  box-shadow: 0 4px 18px rgba(195, 125, 85, 0.15);
+  opacity: 0.94;
+  box-shadow: 0 6px 20px rgba(50, 120, 180, 0.16);
 }
 
 /* Lóbulos redondeados que dan volumen y forma de nube real */
@@ -426,6 +458,224 @@ body {
     left: 105vw;
     opacity: 0;
     transform: translateY(8px) scale(var(--bird-scale, 1));
+  }
+}
+
+/* ─── ÁRBOLES DE FONDO (ECOSISTEMA DE LILIES) ────────── 
+   Árboles lejanos en el horizonte de la colina. Escala reducida 
+   y atmósfera suave para colocarlos claramente en segundo 
+   plano, aportando profundidad paisajística sin competir 
+   con la flor principal.
+   ──────────────────────────────────────────────────────── */
+.trees {
+  position: fixed;
+  bottom: 23vh; /* Arraigados en el horizonte de la colina lejana */
+  left: 0;
+  right: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 1; /* Estrictamente en el plano de fondo, detrás de las flores */
+  opacity: 0.82; /* Suave perspectiva aérea */
+  filter: blur(0.35px); /* Desenfoque sutil de profundidad de campo */
+}
+
+.tree {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+/* Árbol 1 (Izquierda fondo): Silueta distante de árbol templado con tronco visible */
+.tree--1 {
+  left: clamp(2%, 6vw, 10%);
+  width: clamp(80px, 11vw, 150px);
+  height: clamp(150px, 20vw, 260px);
+  animation: treeSwayLeft 10s ease-in-out infinite alternate;
+}
+
+/* Árbol 2 (Derecha fondo): Árbol distante acompañante */
+.tree--2 {
+  right: clamp(2%, 6vw, 10%);
+  width: clamp(75px, 10vw, 140px);
+  height: clamp(140px, 18vw, 240px);
+  animation: treeSwayRight 12s ease-in-out infinite alternate;
+}
+
+/* Tronco visible con proporción de plano lejano */
+.tree__trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(7px, 1vw, 13px);
+  height: 76%;
+  background: linear-gradient(90deg, #2b180d 0%, #462f1e 35%, #6a4c35 65%, #301b0f 100%);
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset -2px 0 3px rgba(0, 0, 0, 0.45);
+}
+
+/* Base ensanchada del tronco sobre el horizonte */
+.tree__trunk::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 175%;
+  height: 8px;
+  background: inherit;
+  border-radius: 50% 50% 0 0;
+}
+
+/* Ramas secundarias estructurales */
+.tree__branch {
+  position: absolute;
+  background: linear-gradient(90deg, #301b0f, #543926);
+  border-radius: 3px;
+  box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.tree--1 .tree__branch--1 {
+  top: 44%;
+  left: -13px;
+  width: 18px;
+  height: 5px;
+  transform: rotate(-32deg);
+}
+
+.tree--1 .tree__branch--2 {
+  top: 30%;
+  right: -15px;
+  width: 20px;
+  height: 5px;
+  transform: rotate(28deg);
+}
+
+.tree--2 .tree__branch--1 {
+  top: 45%;
+  right: -13px;
+  width: 17px;
+  height: 5px;
+  transform: rotate(32deg);
+}
+
+.tree--2 .tree__branch--2 {
+  top: 32%;
+  left: -14px;
+  width: 18px;
+  height: 5px;
+  transform: rotate(-28deg);
+}
+
+/* Copa del árbol elevada para dejar el tronco claramente visible */
+.tree__crown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56%;
+  transform-origin: bottom center;
+}
+
+.tree__leaf-cluster {
+  position: absolute;
+  border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+  box-shadow: 
+    inset -3px -4px 8px rgba(10, 45, 15, 0.4),
+    inset 2px 3px 6px rgba(255, 255, 255, 0.18),
+    0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Distribución de copa en Árbol 1 */
+.tree--1 .tree__leaf-cluster--1 {
+  width: 72%;
+  height: 52%;
+  top: 0;
+  left: 14%;
+  background: radial-gradient(circle at 35% 30%, #76cb78 0%, #43a047 55%, #1b5e20 100%);
+}
+
+.tree--1 .tree__leaf-cluster--2 {
+  width: 60%;
+  height: 48%;
+  top: 20%;
+  left: -6%;
+  background: radial-gradient(circle at 35% 30%, #5cb85c 0%, #388e3c 60%, #154c1a 100%);
+}
+
+.tree--1 .tree__leaf-cluster--3 {
+  width: 62%;
+  height: 48%;
+  top: 18%;
+  right: -6%;
+  background: radial-gradient(circle at 35% 30%, #81c784 0%, #4caf50 55%, #1b5e20 100%);
+}
+
+.tree--1 .tree__leaf-cluster--4 {
+  width: 56%;
+  height: 44%;
+  top: 40%;
+  left: 8%;
+  background: radial-gradient(circle at 35% 30%, #4caf50 0%, #2e7d32 60%, #124717 100%);
+}
+
+.tree--1 .tree__leaf-cluster--5 {
+  width: 52%;
+  height: 42%;
+  top: 42%;
+  right: 5%;
+  background: radial-gradient(circle at 35% 30%, #5cb85c 0%, #388e3c 60%, #17541d 100%);
+}
+
+/* Distribución de copa en Árbol 2 */
+.tree--2 .tree__leaf-cluster--1 {
+  width: 76%;
+  height: 54%;
+  top: 2%;
+  left: 12%;
+  background: radial-gradient(circle at 35% 30%, #76cb78 0%, #43a047 55%, #1b5e20 100%);
+}
+
+.tree--2 .tree__leaf-cluster--2 {
+  width: 64%;
+  height: 48%;
+  top: 22%;
+  left: -7%;
+  background: radial-gradient(circle at 35% 30%, #5cb85c 0%, #388e3c 60%, #154c1a 100%);
+}
+
+.tree--2 .tree__leaf-cluster--3 {
+  width: 66%;
+  height: 50%;
+  top: 20%;
+  right: -7%;
+  background: radial-gradient(circle at 35% 30%, #81c784 0%, #4caf50 55%, #1b5e20 100%);
+}
+
+.tree--2 .tree__leaf-cluster--4 {
+  width: 70%;
+  height: 46%;
+  top: 42%;
+  left: 15%;
+  background: radial-gradient(circle at 35% 30%, #4caf50 0%, #2e7d32 60%, #134e19 100%);
+}
+
+/* Animaciones suaves de balanceo */
+@keyframes treeSwayLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1.8deg) skewX(0.8deg);
+  }
+}
+
+@keyframes treeSwayRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-1.6deg) skewX(-0.6deg);
   }
 }
 
@@ -633,8 +883,11 @@ body {
   border-radius: 51% 49% 47% 53% / 44% 45% 55% 69%;
   background-color: var(--color-petal);
   transform-origin: bottom center;
-  opacity: 0.9;
-  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+  opacity: 0.96;
+  box-shadow: 
+    inset 0 0 2.2vmin rgba(230, 212, 224, 0.45),
+    inset 0 0 0.8vmin rgba(255, 255, 255, 0.9),
+    0 0 1.5vmin rgba(255, 255, 255, 0.4);
 }
 
 /* Pétalo 1: frente-derecha */
@@ -661,7 +914,8 @@ body {
   transform: translate(0%, 18%) rotateX(70deg) rotate(-43deg);
   background-color: var(--color-petal-shadow);
   z-index: 1;
-  opacity: 0.8;
+  opacity: 0.9;
+  box-shadow: inset 0 0 1.5vmin rgba(180, 160, 175, 0.4);
 }
 
 
@@ -694,7 +948,7 @@ body {
     repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px),
     repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px),
     repeating-linear-gradient(67.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px),
-    linear-gradient(90deg, var(--color-center-pattern), #ffce00);
+    linear-gradient(90deg, var(--color-center-pattern), #ffa000);
 }
 
 
@@ -1369,18 +1623,22 @@ body {
 
 
 /* ═══════════════════════════════════════════════════════
-   MENSAJE FINAL (Flotando en el cielo sobre las flores)
+   MENSAJE FINAL (Distribuido en 2 columnas en el cielo 
+   para no tapar las flores centrales)
    ═══════════════════════════════════════════════════════ */
 
 .final-message {
   position: fixed;
-  top: 10vh;
+  top: 5vh;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  text-align: center;
-  width: 90%;
-  max-width: 600px;
+  width: 94%;
+  max-width: 1150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(1rem, 10vw, 15rem);
   opacity: 0;
   pointer-events: none;
   /* Animación CSS pura: se muestra a los 4.5s sin fallar */
@@ -1392,21 +1650,41 @@ body {
   pointer-events: auto;
 }
 
+.final-message__col {
+  flex: 1;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 18px;
+  padding: 1.1rem 1.4rem;
+  box-shadow: 0 8px 30px rgba(10, 45, 90, 0.12);
+}
+
+.final-message__col--left {
+  text-align: left;
+}
+
+.final-message__col--right {
+  text-align: right;
+}
+
 .final-message__text {
   font-family: var(--font-accent);
-  font-size: clamp(1.3rem, 4.2vw, 2.1rem);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
   font-weight: 500;
   font-style: italic;
   line-height: 1.6;
   color: var(--color-text);
-  text-shadow: 0 0 25px var(--color-text-glow), 0 2px 10px rgba(0, 0, 0, 0.7);
-  letter-spacing: 1px;
+  text-shadow: 0 0 20px var(--color-text-glow), 0 2px 10px rgba(13, 71, 161, 0.7);
+  letter-spacing: 0.5px;
 }
 
 @keyframes messageFadeIn {
   0% {
     opacity: 0;
-    transform: translateX(-50%) translateY(15px);
+    transform: translateX(-50%) translateY(12px);
   }
 
   100% {
@@ -1416,18 +1694,33 @@ body {
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────── */
-@media (max-width: 480px) {
+@media (max-width: 680px) {
   .grass {
     height: 25vh;
   }
 
   .final-message {
-    top: 8vh;
-    width: 92%;
+    top: 3.5vh;
+    width: 95%;
+    gap: 0.6rem;
+  }
+
+  .final-message__col {
+    padding: 0.7rem 0.85rem;
+    border-radius: 14px;
+  }
+
+  .final-message__col--left {
+    text-align: left;
+  }
+
+  .final-message__col--right {
+    text-align: right;
   }
 
   .final-message__text {
-    font-size: clamp(1.15rem, 5vw, 1.6rem);
+    font-size: clamp(0.78rem, 2.8vw, 0.92rem);
+    line-height: 1.45;
   }
 }
 
